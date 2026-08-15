@@ -5,672 +5,101 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Qadir Lab at the University of Florida: pancreatic beta-cell biology, sex differences, and metabolic systems biology.">
   <title>Qadir Lab | University of Florida</title>
-
-  <style>
-    :root {
-      --uf-blue: #0021a5;
-      --uf-blue-dark: #001253;
-      --uf-orange: #fa4616;
-      --ink: #10233c;
-      --muted: #516174;
-      --mist: #f3f7fc;
-      --white: #ffffff;
-      --line: #dce7f1;
-      --teal: #007c91;
-      --cyan: #57d9ff;
-      --ice: #e9fbff;
-      --shadow: 0 14px 35px rgba(0, 28, 95, 0.09);
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      color: var(--ink);
-      background: var(--white);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", Arial, sans-serif;
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-    }
-
-    .container {
-      width: min(1160px, calc(100% - 2.5rem));
-      margin: 0 auto;
-    }
-
-    /* Navigation */
-
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 30;
-      background: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .nav {
-      min-height: 76px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1.5rem;
-    }
-
-    .brand {
-      color: var(--uf-blue-dark);
-      font-size: 1.04rem;
-      font-weight: 850;
-      letter-spacing: -0.025em;
-      line-height: 1.05;
-      text-decoration: none;
-    }
-
-    .brand small {
-      display: block;
-      margin-top: 0.28rem;
-      color: var(--teal);
-      font-size: 0.66rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      gap: 1.05rem;
-      font-size: 0.86rem;
-      font-weight: 750;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-    }
-
-    .nav-links a:hover {
-      color: var(--uf-orange);
-    }
-
-    /* Animated hero */
-
-    .network-hero {
-      position: relative;
-      min-height: 680px;
-      overflow: hidden;
-      isolation: isolate;
-      color: var(--white);
-      background:
-        radial-gradient(circle at 82% 44%, #0b4cd1 0%, #0021a5 23%, #001253 62%, #01031a 100%);
-    }
-
-    .network-hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-      background:
-        linear-gradient(
-          90deg,
-          rgba(0, 5, 35, 0.83) 0%,
-          rgba(0, 14, 79, 0.59) 36%,
-          rgba(0, 17, 90, 0.14) 67%,
-          rgba(0, 17, 90, 0.02) 100%
-        );
-    }
-
-    #network {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      align-items: center;
-      min-height: 680px;
-      padding: 7.5rem 0;
-    }
-
-    .hero-copy {
-      max-width: 710px;
-    }
-
-    .eyebrow,
-    .section-kicker {
-      margin: 0 0 0.85rem;
-      font-size: 0.75rem;
-      font-weight: 850;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
-
-    .eyebrow {
-      color: #9cefff;
-    }
-
-    .section-kicker {
-      color: var(--teal);
-    }
-
-    h1,
-    h2,
-    h3 {
-      line-height: 1.12;
-      letter-spacing: -0.04em;
-    }
-
-    h1 {
-      max-width: 760px;
-      margin: 0;
-      font-size: clamp(2.8rem, 5.9vw, 5.35rem);
-    }
-
-    h2 {
-      max-width: 850px;
-      margin: 0;
-      color: var(--ink);
-      font-size: clamp(2.1rem, 3.5vw, 3.25rem);
-    }
-
-    h3 {
-      margin: 0 0 0.65rem;
-      color: var(--ink);
-      font-size: 1.25rem;
-    }
-
-    .hero-copy > p:not(.eyebrow) {
-      max-width: 650px;
-      margin: 1.45rem 0 1.95rem;
-      color: #dceaff;
-      font-size: 1.13rem;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 0.78rem 1.14rem;
-      border: 1px solid transparent;
-      border-radius: 999px;
-      text-decoration: none;
-      font-size: 0.92rem;
-      font-weight: 800;
-      transition: transform 0.18s ease, background 0.18s ease;
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-    }
-
-    .button-primary {
-      color: var(--white);
-      background: var(--uf-orange);
-    }
-
-    .button-primary:hover {
-      background: #d93a0e;
-    }
-
-    .button-secondary {
-      margin-left: 0.55rem;
-      color: var(--white);
-      border-color: rgba(255, 255, 255, 0.62);
-      background: rgba(255, 255, 255, 0.06);
-    }
-
-    /* Main sections */
-
-    section {
-      padding: 5.7rem 0;
-    }
-
-    .lead {
-      max-width: 790px;
-      color: var(--muted);
-      font-size: 1.06rem;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
-      margin-top: 2.2rem;
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      align-items: start;
-      gap: 3rem;
-    }
-
-    .card {
-      padding: 1.55rem;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      background: var(--white);
-      box-shadow: 0 4px 16px rgba(0, 29, 95, 0.04);
-    }
-
-    .card p {
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .research-icon {
-      display: grid;
-      place-items: center;
-      width: 48px;
-      height: 48px;
-      margin-bottom: 1rem;
-      border-radius: 14px;
-      color: var(--white);
-      background: linear-gradient(135deg, var(--uf-blue), var(--teal));
-      font-size: 1.3rem;
-      font-weight: 800;
-    }
-
-    .accent-section {
-      background: var(--mist);
-    }
-
-    .list {
-      padding: 0;
-      margin: 1.2rem 0 0;
-      list-style: none;
-    }
-
-    .list li {
-      position: relative;
-      padding: 0.65rem 0 0.65rem 1.45rem;
-      color: var(--muted);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .list li::before {
-      content: "";
-      position: absolute;
-      top: 1.2rem;
-      left: 0;
-      width: 0.56rem;
-      height: 0.56rem;
-      border-radius: 50%;
-      background: var(--uf-orange);
-    }
-
-    .news-date {
-      margin: 0 0 0.65rem;
-      color: var(--teal);
-      font-size: 0.78rem;
-      font-weight: 850;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .notice {
-      padding: 1.2rem 1.35rem;
-      border-left: 4px solid var(--uf-orange);
-      border-radius: 0 12px 12px 0;
-      color: var(--muted);
-      background: #fff5f0;
-    }
-
-    .join-section {
-      color: var(--white);
-      background: linear-gradient(120deg, #001253, #0021a5);
-    }
-
-    .join-section h2 {
-      color: var(--white);
-    }
-
-    .join-section .lead {
-      color: #dceaff;
-    }
-
-    .join-layout {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      gap: 2rem;
-    }
-
-    /* Footer */
-
-    footer {
-      padding: 2.5rem 0;
-      color: #d5e3f6;
-      background: #06152f;
-    }
-
-    .footer-layout {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 1rem;
-      align-items: center;
-      font-size: 0.92rem;
-    }
-
-    footer a {
-      color: #9cefff;
-      text-decoration: none;
-    }
-
-    /* Mobile */
-
-    @media (max-width: 850px) {
-      .nav {
-        padding: 0.9rem 0;
-        align-items: flex-start;
-      }
-
-      .nav-links {
-        gap: 0.55rem 0.85rem;
-      }
-
-      .network-hero,
-      .hero-content {
-        min-height: 560px;
-      }
-
-      .hero-content {
-        padding: 5.8rem 0;
-      }
-
-      .grid-3,
-      .grid-2,
-      .join-layout {
-        grid-template-columns: 1fr;
-      }
-
-      section {
-        padding: 4.4rem 0;
-      }
-
-      .button-secondary {
-        margin-left: 0.28rem;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      #network {
-        display: none;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
   <header class="site-header">
     <nav class="container nav" aria-label="Primary navigation">
-      <a class="brand" href="#home">
-        QADIR LAB
-        <small>University of Florida</small>
-      </a>
-
+      <a class="brand" href="index.html">QADIR LAB<small>University of Florida</small></a>
       <div class="nav-links">
-        <a href="#research">Research</a>
-        <a href="#approach">Approach</a>
-        <a href="#news">News</a>
-        <a href="#join">Join Us</a>
-        <a href="#contact">Contact</a>
+        <a class="active" href="index.html">Home</a>
+        <a href="research.html">Research</a>
+        <a href="people.html">People</a>
+        <a href="publications.html">Publications</a>
+        <a href="news.html">News</a>
+        <a href="join.html">Join Us</a>
+        <a href="contact.html">Contact</a>
       </div>
     </nav>
   </header>
 
   <main>
-    <section class="network-hero" id="home">
+    <section class="network-hero" aria-label="Animated polygon network background">
       <canvas id="network"></canvas>
-
       <div class="container hero-content">
         <div class="hero-copy">
           <p class="eyebrow">Metabolic Systems • Endocrine Biology • Precision Medicine</p>
-
           <h1>Defining sex-specific mechanisms of β-cell health and metabolic disease.</h1>
-
-          <p>
-            We integrate endocrine physiology, functional genomics, quantitative imaging,
-            and systems biology to understand how sex and estrogen signaling shape
-            pancreatic islet function, diabetes risk, and metabolic resilience.
-          </p>
-
-          <a class="button button-primary" href="#research">Explore our research</a>
-          <a class="button button-secondary" href="#join">Join the lab</a>
+          <p>We integrate endocrine physiology, functional genomics, quantitative imaging, and systems biology to understand how sex and estrogen signaling shape pancreatic islet function, diabetes risk, and metabolic resilience.</p>
+          <a class="button button-primary" href="research.html">Explore our research</a>
+          <a class="button button-secondary" href="join.html">Join the lab</a>
         </div>
       </div>
     </section>
 
-    <section id="research">
+    <section>
       <div class="container">
         <p class="section-kicker">What we study</p>
         <h2>From molecular mechanisms to metabolic phenotypes</h2>
-
-        <p class="lead">
-          The Qadir Lab investigates how endocrine-cell function is regulated across
-          biological sex and metabolic context. We connect molecular mechanisms with
-          islet physiology and whole-body outcomes to identify pathways that preserve
-          β-cell health.
-        </p>
-
+        <p class="lead">The Qadir Lab investigates how endocrine-cell function is regulated across biological sex and metabolic context. We connect molecular mechanisms with islet physiology and whole-body outcomes to identify pathways that preserve β-cell health.</p>
         <div class="grid-3">
-          <article class="card">
-            <div class="research-icon">β</div>
-            <h3>β-cell biology</h3>
-            <p>
-              Insulin secretion, calcium signaling, cellular stress, and mechanisms
-              that preserve β-cell identity and functional capacity.
-            </p>
-          </article>
-
-          <article class="card">
-            <div class="research-icon">♀</div>
-            <h3>Sex differences</h3>
-            <p>
-              Sex chromosomes, gonadal hormones, and estrogen receptor pathways that
-              influence endocrine adaptation and diabetes susceptibility.
-            </p>
-          </article>
-
-          <article class="card">
-            <div class="research-icon">◌</div>
-            <h3>Systems metabolism</h3>
-            <p>
-              Transcriptomic, spatial, imaging, and physiological approaches that
-              connect cell states to organism-level metabolic outcomes.
-            </p>
-          </article>
+          <article class="card"><div class="research-icon">β</div><h3>β-cell biology</h3><p>Insulin secretion, calcium signaling, cellular stress, and mechanisms that preserve β-cell identity and functional capacity.</p></article>
+          <article class="card"><div class="research-icon">♀</div><h3>Sex differences</h3><p>Sex chromosomes, gonadal hormones, and estrogen receptor pathways that influence endocrine adaptation and diabetes susceptibility.</p></article>
+          <article class="card"><div class="research-icon">◌</div><h3>Systems metabolism</h3><p>Transcriptomic, spatial, imaging, and physiological approaches that connect cell states to organism-level metabolic outcomes.</p></article>
         </div>
       </div>
     </section>
 
-    <section class="accent-section" id="approach">
+    <section class="accent-section">
       <div class="container grid-2">
-        <div>
-          <p class="section-kicker">Research approach</p>
-          <h2>Mechanism-driven and multidisciplinary</h2>
-
-          <p class="lead">
-            We combine experimentally rigorous in vivo and ex vivo systems with
-            quantitative data analysis to identify mechanisms of endocrine resilience
-            and dysfunction.
-          </p>
-
-          <ul class="list">
-            <li>Mouse model development and metabolic phenotyping</li>
-            <li>Glucose-, hormone-, and nutrient-stimulated insulin secretion assays</li>
-            <li>Islet isolation, confocal microscopy, and live-cell calcium imaging</li>
-            <li>Bulk, single-cell, and spatial transcriptomic analysis</li>
-            <li>Computational systems biology and reproducible statistical workflows</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <p class="section-kicker">Current research questions</p>
-          <h3>How does sex shape endocrine resilience?</h3>
-          <p>
-            We study how estrogen signaling and sex-linked biology affect β-cell
-            calcium handling, insulin secretion, transcriptional state, and
-            adaptation to metabolic stress.
-          </p>
-
-          <div class="notice" style="margin-top: 1.4rem;">
-            Replace this text with your most current specific project summaries,
-            funded aims, or featured publication findings.
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="news">
-      <div class="container">
-        <p class="section-kicker">News & updates</p>
-        <h2>What is happening in the lab</h2>
-
-        <div class="grid-3">
-          <article class="card">
-            <p class="news-date">Lab launch</p>
-            <h3>Welcome to the Qadir Lab</h3>
-            <p>
-              Add a brief introduction to the laboratory, its mission, and the
-              research environment at the University of Florida.
-            </p>
-          </article>
-
-          <article class="card">
-            <p class="news-date">Funding & awards</p>
-            <h3>Research milestones</h3>
-            <p>
-              Highlight research awards, grants, invited talks, trainee honors, and
-              new collaborations here.
-            </p>
-          </article>
-
-          <article class="card">
-            <p class="news-date">Publications</p>
-            <h3>New science from the lab</h3>
-            <p>
-              Feature a plain-language summary of new papers and link visitors to
-              PubMed, DOI pages, preprints, or full text.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="join-section" id="join">
-      <div class="container join-layout">
-        <div>
-          <p class="eyebrow">Join us</p>
-          <h2>Interested in β-cell biology and metabolic health?</h2>
-
-          <p class="lead">
-            We welcome inquiries from undergraduate researchers, graduate students,
-            postdoctoral fellows, research staff, and collaborators interested in
-            endocrine biology, metabolism, imaging, and computational science.
-          </p>
-        </div>
-
-        <a class="button button-primary" href="mailto:YOUR.EMAIL@ufl.edu">
-          Contact the PI
-        </a>
+        <div><p class="section-kicker">Latest updates</p><h2>News from the lab</h2><p class="lead">Explore announcements about our research program, publications, funding, collaborations, and opportunities.</p></div>
+        <div class="card"><p class="news-date">Coming soon</p><h3>Welcome to the Qadir Lab</h3><p>Use this space for your lab launch announcement and a concise description of your research mission.</p><p style="margin-top:1rem"><a class="content-link" href="news.html">Read all news →</a></p></div>
       </div>
     </section>
   </main>
 
-  <footer id="contact">
+  <footer class="site-footer">
     <div class="container footer-layout">
-      <div>
-        <strong>QADIR LAB</strong><br>
-        Department of Pathology, Immunology &amp; Laboratory Medicine<br>
-        University of Florida • Gainesville, FL
-      </div>
-
-      <div>
-        <a href="mailto:YOUR.EMAIL@ufl.edu">YOUR.EMAIL@ufl.edu</a>
-      </div>
+      <div><strong>QADIR LAB</strong><br>Department of Pathology, Immunology &amp; Laboratory Medicine<br>University of Florida • Gainesville, FL</div>
+      <div><a href="mailto:YOUR.EMAIL@ufl.edu">YOUR.EMAIL@ufl.edu</a></div>
     </div>
   </footer>
 
   <script>
-    const canvas = document.getElementById("network");
-    const ctx = canvas.getContext("2d");
-    const hero = document.querySelector(".network-hero");
-    const reduceMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
+    const canvas = document.getElementById('network');
+    const ctx = canvas.getContext('2d');
+    const hero = document.querySelector('.network-hero');
+    const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const colors = { ice: '233,251,255', cyan: '87,217,255', orange: '250,70,22', blue: '60,123,255' };
+    let width, height, ratio, nodes = [];
 
-    const colors = {
-      ice: "233,251,255",
-      cyan: "87,217,255",
-      orange: "250,70,22",
-      blue: "60,123,255"
-    };
-
-    let width;
-    let height;
-    let ratio;
-    let nodes = [];
-
-    function distance(a, b) {
-      return Math.hypot(a.x - b.x, a.y - b.y);
-    }
+    function distance(a, b) { return Math.hypot(a.x - b.x, a.y - b.y); }
 
     function createNodes() {
-      const total = Math.max(
-        118,
-        Math.min(190, Math.round((width * height) / 5200))
-      );
-
-      nodes = Array.from({ length: total }, (_, index) => {
-        const rightWeighted = index < total * 0.86;
-        const orange = Math.random() < 0.105;
-
+      const total = Math.max(58, Math.min(88, Math.round(width * height / 12000)));
+      nodes = Array.from({ length: total }, (_, i) => {
+        const right = i < total * 0.82;
+        const orange = Math.random() < 0.10;
         return {
-          x: rightWeighted
-            ? width * (0.22 + Math.random() * 0.82)
-            : width * Math.random(),
+          x: right ? width * (0.28 + Math.random() * 0.76) : width * Math.random(),
           y: Math.random() * height,
-          vx: (Math.random() - 0.5) * 0.085,
-          vy: (Math.random() - 0.5) * 0.085,
-          radius: orange ? 2.4 : 1.25 + Math.random() * 0.7,
-          color: orange
-            ? "orange"
-            : Math.random() < 0.34
-              ? "cyan"
-              : "ice",
+          vx: (Math.random() - 0.5) * 0.075,
+          vy: (Math.random() - 0.5) * 0.075,
+          radius: orange ? 2.4 : 1.35 + Math.random() * 0.65,
+          color: orange ? 'orange' : (Math.random() < 0.34 ? 'cyan' : 'ice'),
           phase: Math.random() * Math.PI * 2
         };
       });
     }
 
-    function resizeNetwork() {
-      ratio = Math.min(window.devicePixelRatio || 1, 2);
+    function resize() {
+      ratio = Math.min(devicePixelRatio || 1, 2);
       width = hero.clientWidth;
       height = hero.clientHeight;
-
       canvas.width = width * ratio;
       canvas.height = height * ratio;
-      canvas.style.width = `${width}px`;
-      canvas.style.height = `${height}px`;
-
+      canvas.style.width = width + 'px';
+      canvas.style.height = height + 'px';
       ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
       createNodes();
     }
@@ -678,11 +107,7 @@
     function polygon(points, color, opacity) {
       ctx.beginPath();
       ctx.moveTo(points[0].x, points[0].y);
-
-      for (let i = 1; i < points.length; i += 1) {
-        ctx.lineTo(points[i].x, points[i].y);
-      }
-
+      for (let i = 1; i < points.length; i += 1) ctx.lineTo(points[i].x, points[i].y);
       ctx.closePath();
       ctx.fillStyle = `rgba(${colors[color]}, ${opacity})`;
       ctx.fill();
@@ -690,46 +115,29 @@
 
     function draw(time) {
       ctx.clearRect(0, 0, width, height);
-
-      const maximumDistance = Math.min(160, width * 0.135);
-      const nearby = nodes.map(() => []);
+      const max = Math.min(180, width * 0.15);
+      const near = nodes.map(() => []);
 
       for (const node of nodes) {
         node.x += node.vx;
         node.y += node.vy;
-
-        if (node.x < width * 0.08 || node.x > width * 1.04) {
-          node.vx *= -1;
-        }
-
-        if (node.y < -15 || node.y > height + 15) {
-          node.vy *= -1;
-        }
+        if (node.x < width * 0.12 || node.x > width * 1.04) node.vx *= -1;
+        if (node.y < -15 || node.y > height + 15) node.vy *= -1;
       }
 
       for (let i = 0; i < nodes.length; i += 1) {
         for (let j = i + 1; j < nodes.length; j += 1) {
-          const a = nodes[i];
-          const b = nodes[j];
-          const d = distance(a, b);
-
-          if (d < maximumDistance) {
-            nearby[i].push({ index: j, distance: d });
-            nearby[j].push({ index: i, distance: d });
-
-            const orangeLine = a.color === "orange" || b.color === "orange";
-            const opacity =
-              0.25 *
-              (1 - d / maximumDistance) *
-              (0.72 + 0.28 * Math.sin(time / 1300 + a.phase));
-
+          const a = nodes[i], b = nodes[j], d = distance(a, b);
+          if (d < max) {
+            near[i].push({ i: j, d });
+            near[j].push({ i, d });
+            const orange = a.color === 'orange' || b.color === 'orange';
+            const alpha = 0.29 * (1 - d / max) * (0.72 + 0.28 * Math.sin(time / 1400 + a.phase));
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
-            ctx.strokeStyle = `rgba(${
-              colors[orangeLine ? "orange" : "ice"]
-            }, ${opacity})`;
-            ctx.lineWidth = orangeLine ? 0.9 : 0.55;
+            ctx.strokeStyle = `rgba(${colors[orange ? 'orange' : 'ice']}, ${alpha})`;
+            ctx.lineWidth = orange ? 0.9 : 0.6;
             ctx.stroke();
           }
         }
@@ -737,93 +145,36 @@
 
       for (let i = 0; i < nodes.length; i += 1) {
         const a = nodes[i];
-
-        const closest = nearby[i]
-          .sort((first, second) => first.distance - second.distance)
-          .slice(0, 10)
-          .map((item) => nodes[item.index]);
-
+        const closest = near[i].sort((x, y) => x.d - y.d).slice(0, 6).map(v => nodes[v.i]);
         for (let j = 0; j < closest.length; j += 1) {
           for (let k = j + 1; k < closest.length; k += 1) {
-            const b = closest[j];
-            const c = closest[k];
-            const sideLength = distance(b, c);
-
-            const area = Math.abs(
-              (b.x - a.x) * (c.y - a.y) -
-              (c.x - a.x) * (b.y - a.y)
-            );
-
-            if (
-              sideLength < maximumDistance * 1.18 &&
-              area > 110 &&
-              area < 12000
-            ) {
-              const orangeFacet =
-                a.color === "orange" ||
-                b.color === "orange" ||
-                c.color === "orange";
-
-              const facetColor = orangeFacet
-                ? "orange"
-                : Math.sin(time / 1550 + a.phase + j * 0.7) > 0.15
-                  ? "cyan"
-                  : "blue";
-
-              const opacity =
-                (orangeFacet ? 0.047 : 0.028) +
-                0.018 *
-                (1 + Math.sin(time / 1050 + a.phase + k));
-
-              polygon([a, b, c], facetColor, opacity);
+            const b = closest[j], c = closest[k];
+            const area = Math.abs((b.x - a.x) * (c.y - a.y) - (c.x - a.x) * (b.y - a.y));
+            if (distance(b, c) < max * 1.12 && area > 220 && area < 13000) {
+              const orange = a.color === 'orange' || b.color === 'orange' || c.color === 'orange';
+              const color = orange ? 'orange' : (Math.sin(time / 1700 + a.phase + j) > 0.3 ? 'cyan' : 'blue');
+              polygon([a, b, c], color, orange ? 0.06 : 0.042);
             }
           }
-        }
-
-        if (closest.length >= 4 && i % 2 === 0) {
-          const quad = [a, closest[0], closest[2], closest[3]];
-          const orangeFacet = quad.some(
-            (point) => point.color === "orange"
-          );
-
-          polygon(
-            quad,
-            orangeFacet ? "orange" : "blue",
-            orangeFacet ? 0.02 : 0.018
-          );
         }
       }
 
       for (const node of nodes) {
         const pulse = 1 + 0.25 * Math.sin(time / 860 + node.phase);
-
         ctx.beginPath();
-        ctx.arc(
-          node.x,
-          node.y,
-          node.radius * pulse,
-          0,
-          Math.PI * 2
-        );
-
-        ctx.fillStyle = `rgba(${colors[node.color]}, ${
-          0.48 + 0.35 * Math.sin(time / 940 + node.phase)
-        })`;
-
-        ctx.shadowBlur = node.color === "orange" ? 10 : 6;
+        ctx.arc(node.x, node.y, node.radius * pulse, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${colors[node.color]}, ${0.50 + 0.32 * Math.sin(time / 940 + node.phase)})`;
+        ctx.shadowBlur = node.color === 'orange' ? 10 : 6;
         ctx.shadowColor = `rgb(${colors[node.color]})`;
         ctx.fill();
         ctx.shadowBlur = 0;
       }
 
-      if (!reduceMotion) {
-        requestAnimationFrame(draw);
-      }
+      if (!reduceMotion) requestAnimationFrame(draw);
     }
 
-    window.addEventListener("resize", resizeNetwork);
-
-    resizeNetwork();
+    addEventListener('resize', resize);
+    resize();
     requestAnimationFrame(draw);
   </script>
 </body>
